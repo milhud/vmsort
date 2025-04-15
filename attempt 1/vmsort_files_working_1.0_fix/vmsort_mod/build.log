@@ -1,0 +1,71 @@
+make -C /lib/modules/6.8.0-57-generic/build M=/home/vboxuser/vmsort_mod modules
+make[1]: Entering directory '/usr/src/linux-headers-6.8.0-57-generic'
+warning: the compiler differs from the one used to build the kernel
+  The kernel was built by: x86_64-linux-gnu-gcc-13 (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+  You are using:           gcc-13 (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+  CC [M]  /home/vboxuser/vmsort_mod/vmsort.o
+In file included from /home/vboxuser/vmsort_mod/vmsort.c:6:
+/home/vboxuser/vmsort_mod/vmsort_bm.h: In function ‘vmsort_bm_set’:
+/home/vboxuser/vmsort_mod/vmsort_bm.h:14:28: error: passing argument 2 of ‘set_bit’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+   14 |                 set_bit(w, &bm->l1);
+      |                            ^~~~~~~
+      |                            |
+      |                            u64 * {aka long long unsigned int *}
+In file included from ./arch/x86/include/asm/bitops.h:432,
+                 from ./include/linux/bitops.h:68,
+                 from ./include/linux/kernel.h:23,
+                 from ./include/linux/cpumask.h:10,
+                 from ./arch/x86/include/asm/paravirt.h:21,
+                 from ./arch/x86/include/asm/cpuid.h:62,
+                 from ./arch/x86/include/asm/processor.h:19,
+                 from ./arch/x86/include/asm/timex.h:5,
+                 from ./include/linux/timex.h:67,
+                 from ./include/linux/time32.h:13,
+                 from ./include/linux/time.h:60,
+                 from ./include/linux/stat.h:19,
+                 from ./include/linux/module.h:13,
+                 from /home/vboxuser/vmsort_mod/vmsort.c:1:
+./include/asm-generic/bitops/instrumented-atomic.h:26:70: note: expected ‘volatile long unsigned int *’ but argument is of type ‘u64 *’ {aka ‘long long unsigned int *’}
+   26 | static __always_inline void set_bit(long nr, volatile unsigned long *addr)
+      |                                              ~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+/home/vboxuser/vmsort_mod/vmsort_bm.h: In function ‘vmsort_bm_next’:
+/home/vboxuser/vmsort_mod/vmsort_bm.h:21:34: error: passing argument 2 of ‘const_test_bit’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+   21 |                 if (!test_bit(w, &bm->l1)) continue;
+      |                                  ^~~~~~~
+      |                                  |
+      |                                  u64 * {aka long long unsigned int *}
+./include/linux/bitops.h:53:24: note: in definition of macro ‘bitop’
+   53 |          const##op(nr, addr) : op(nr, addr))
+      |                        ^~~~
+/home/vboxuser/vmsort_mod/vmsort_bm.h:21:22: note: in expansion of macro ‘test_bit’
+   21 |                 if (!test_bit(w, &bm->l1)) continue;
+      |                      ^~~~~~~~
+In file included from ./include/linux/bitops.h:34:
+./include/asm-generic/bitops/generic-non-atomic.h:166:64: note: expected ‘const volatile long unsigned int *’ but argument is of type ‘u64 *’ {aka ‘long long unsigned int *’}
+  166 | const_test_bit(unsigned long nr, const volatile unsigned long *addr)
+      |                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+/home/vboxuser/vmsort_mod/vmsort_bm.h:21:34: error: passing argument 2 of ‘_test_bit’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+   21 |                 if (!test_bit(w, &bm->l1)) continue;
+      |                                  ^~~~~~~
+      |                                  |
+      |                                  u64 * {aka long long unsigned int *}
+./include/linux/bitops.h:53:39: note: in definition of macro ‘bitop’
+   53 |          const##op(nr, addr) : op(nr, addr))
+      |                                       ^~~~
+/home/vboxuser/vmsort_mod/vmsort_bm.h:21:22: note: in expansion of macro ‘test_bit’
+   21 |                 if (!test_bit(w, &bm->l1)) continue;
+      |                      ^~~~~~~~
+In file included from ./arch/x86/include/asm/bitops.h:433:
+./include/asm-generic/bitops/instrumented-non-atomic.h:139:59: note: expected ‘const volatile long unsigned int *’ but argument is of type ‘u64 *’ {aka ‘long long unsigned int *’}
+  139 | _test_bit(unsigned long nr, const volatile unsigned long *addr)
+      |                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+/home/vboxuser/vmsort_mod/vmsort.c: In function ‘ioctl_f’:
+/home/vboxuser/vmsort_mod/vmsort.c:48:9: warning: ignoring return value of ‘copy_to_user’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+   48 |         copy_to_user((void __user *)a, &it, sizeof(it));
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cc1: some warnings being treated as errors
+make[3]: *** [scripts/Makefile.build:243: /home/vboxuser/vmsort_mod/vmsort.o] Error 1
+make[2]: *** [/usr/src/linux-headers-6.8.0-57-generic/Makefile:1925: /home/vboxuser/vmsort_mod] Error 2
+make[1]: *** [Makefile:240: __sub-make] Error 2
+make[1]: Leaving directory '/usr/src/linux-headers-6.8.0-57-generic'
+make: *** [Makefile:4: all] Error 2

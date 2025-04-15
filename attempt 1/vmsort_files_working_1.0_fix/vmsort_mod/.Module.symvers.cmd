@@ -1,0 +1,1 @@
+savedcmd_/home/vboxuser/git_pulls/misc_files/vmsort_files_working_1.0/vmsort_mod/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/vboxuser/git_pulls/misc_files/vmsort_files_working_1.0/vmsort_mod/Module.symvers -T /home/vboxuser/git_pulls/misc_files/vmsort_files_working_1.0/vmsort_mod/modules.order -i Module.symvers -e 
