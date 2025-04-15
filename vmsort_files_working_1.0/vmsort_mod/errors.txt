@@ -1,0 +1,4 @@
+make -C /lib/modules/6.8.0-57-generic/build M=/home/vboxuser/vmsort_mod modules
+make[1]: Entering directory '/usr/src/linux-headers-6.8.0-57-generic'
+  CC [M]  /home/vboxuser/vmsort_mod/vmsort.o
+make[1]: Leaving directory '/usr/src/linux-headers-6.8.0-57-generic'
