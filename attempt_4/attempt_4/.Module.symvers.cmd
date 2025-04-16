@@ -1,0 +1,1 @@
+savedcmd_/home/vboxuser/attempt_4/attempt_4/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/vboxuser/attempt_4/attempt_4/Module.symvers -T /home/vboxuser/attempt_4/attempt_4/modules.order -i Module.symvers -e 
