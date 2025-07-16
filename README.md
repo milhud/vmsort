@@ -21,6 +21,28 @@ Results are extracted by scanning the bitmap.
 
 The aim of this project was to obtain speed with hardware-assisted virtual memory operations. In reality, the CPU generates a page fault exception that requires a ~200 cycle context switch. Additionally, every alloc_pages() call could trigger buddy allocator searches, page reclaims, memory compactions, and NUMA balancing decisions that make this infeasible.
 
+## To Try For Yourself:
+Install kernel headers
+
+```bash
+sudo apt-get install linux-headers-$(uname -r) build-essential
+```
+
+Clone the repository.
+
+````bash
+make
+sudo insmod vmsort.ko
+sudo mknod \dev\vmsort c <major_number> 0
+sudo chmod 666 /dev/vmsort
+````
+
+Get the major number with:
+
+```bash
+dmesg | tail
+```
+
 ## Conclusion
 
 I believe hardware-assisted sorting is underexplored, and has the potential to yield massive speed gains when sorting large arrays (where the context switches are insignificant).
